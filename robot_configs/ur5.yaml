@@ -1,0 +1,66 @@
+name: UR5
+dof: 6
+control_mode: position
+description: "Universal Robots UR5 — 6-DOF industrial arm"
+urdf_path: null
+gripper_joints: []
+end_effectors:
+  - name: tool0
+    parent: wrist_3_link
+    offset_xyz: [0, 0, 0.095]
+    offset_rpy: [0, 0, 0]
+joints:
+  - name: shoulder_pan_joint
+    type: revolute
+    parent: base_link
+    child: shoulder_link
+    axis: [0, 0, 1]
+    limit: [-3.14159, 3.14159]
+    max_vel: 3.14
+    max_effort: 150.0
+    home_angle: 0.0
+  - name: shoulder_lift_joint
+    type: revolute
+    parent: shoulder_link
+    child: upper_arm_link
+    axis: [0, 1, 0]
+    limit: [-3.14159, 3.14159]
+    max_vel: 3.14
+    max_effort: 150.0
+    home_angle: -1.57
+  - name: elbow_joint
+    type: revolute
+    parent: upper_arm_link
+    child: forearm_link
+    axis: [0, 1, 0]
+    limit: [-3.14159, 3.14159]
+    max_vel: 3.14
+    max_effort: 150.0
+    home_angle: 1.57
+  - name: wrist_1_joint
+    type: revolute
+    parent: forearm_link
+    child: wrist_1_link
+    axis: [0, 1, 0]
+    limit: [-3.14159, 3.14159]
+    max_vel: 3.14
+    max_effort: 28.0
+    home_angle: -1.57
+  - name: wrist_2_joint
+    type: revolute
+    parent: wrist_1_link
+    child: wrist_2_link
+    axis: [0, 0, 1]
+    limit: [-3.14159, 3.14159]
+    max_vel: 3.14
+    max_effort: 28.0
+    home_angle: 0.0
+  - name: wrist_3_joint
+    type: revolute
+    parent: wrist_2_link
+    child: wrist_3_link
+    axis: [0, 1, 0]
+    limit: [-3.14159, 3.14159]
+    max_vel: 3.14
+    max_effort: 28.0
+    home_angle: 0.0

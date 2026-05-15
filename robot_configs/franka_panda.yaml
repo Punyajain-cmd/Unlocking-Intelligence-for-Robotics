@@ -1,0 +1,23 @@
+name: Franka_Panda
+dof: 9
+control_mode: position
+description: "Franka Emika Panda — 7-DOF arm + 2-DOF parallel gripper"
+urdf_path: null
+gripper_joints:
+  - panda_finger_joint1
+  - panda_finger_joint2
+end_effectors:
+  - name: panda_hand_tcp
+    parent: panda_link8
+    offset_xyz: [0, 0, 0.1034]
+    offset_rpy: [0, 0, 0]
+joints:
+  - {name: panda_joint1, type: revolute, parent: panda_link0, child: panda_link1, axis: [0,0,1], limit: [-2.8973, 2.8973], max_vel: 2.175, max_effort: 87.0, home_angle: 0.0}
+  - {name: panda_joint2, type: revolute, parent: panda_link1, child: panda_link2, axis: [0,1,0], limit: [-1.7628, 1.7628], max_vel: 2.175, max_effort: 87.0, home_angle: -0.785}
+  - {name: panda_joint3, type: revolute, parent: panda_link2, child: panda_link3, axis: [0,0,1], limit: [-2.8973, 2.8973], max_vel: 2.175, max_effort: 87.0, home_angle: 0.0}
+  - {name: panda_joint4, type: revolute, parent: panda_link3, child: panda_link4, axis: [0,1,0], limit: [-3.0718,-0.0698], max_vel: 2.175, max_effort: 87.0, home_angle: -2.356}
+  - {name: panda_joint5, type: revolute, parent: panda_link4, child: panda_link5, axis: [0,0,1], limit: [-2.8973, 2.8973], max_vel: 2.610, max_effort: 12.0, home_angle: 0.0}
+  - {name: panda_joint6, type: revolute, parent: panda_link5, child: panda_link6, axis: [0,1,0], limit: [-0.0175, 3.7525], max_vel: 2.610, max_effort: 12.0, home_angle: 1.571}
+  - {name: panda_joint7, type: revolute, parent: panda_link6, child: panda_link7, axis: [0,0,1], limit: [-2.8973, 2.8973], max_vel: 2.610, max_effort: 12.0, home_angle: 0.785}
+  - {name: panda_finger_joint1, type: prismatic, parent: panda_hand, child: panda_leftfinger,  axis: [0,1,0], limit: [0.0, 0.04], max_vel: 0.2, max_effort: 70.0, home_angle: 0.02}
+  - {name: panda_finger_joint2, type: prismatic, parent: panda_hand, child: panda_rightfinger, axis: [0,1,0], limit: [0.0, 0.04], max_vel: 0.2, max_effort: 70.0, home_angle: 0.02}
