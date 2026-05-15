@@ -1,0 +1,46 @@
+train:
+  bert_model: bert-base-uncased
+  visual_backbone: dinov2_small
+  language_backbone: bert-base-uncased
+  hidden_dim: 512
+  num_action_bins: 256
+  num_transformer_layers: 6
+  num_heads: 8
+  dropout: 0.1
+  batch_size: 32
+  num_epochs: 50
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  warmup_steps: 1000
+  grad_clip: 1.0
+  mixed_precision: true
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  num_workers: 4
+  save_every: 5
+  eval_every: 1
+  use_wandb: false
+  project_name: robolang
+  experiment_name: vla_baseline
+
+simulation:
+  gravity: -9.81
+  timestep: 0.004166666666666667
+  use_gui: false
+  table_height: 0.625
+  table_half_ext: 0.4
+  robot_urdf: kuka_iiwa/model.urdf
+  block_half_size: 0.025
+  sphere_radius: 0.025
+  cylinder_radius: 0.022
+  cylinder_height: 0.05
+
+eval:
+  num_episodes: 100
+  max_steps_per_task: 50
+  success_threshold: 0.05
+  target_tsr: 0.82
+  target_gca: 0.90
+  target_cia: 0.85
+  target_tcr: 0.80
