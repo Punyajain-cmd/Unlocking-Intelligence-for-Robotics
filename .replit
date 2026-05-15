@@ -1,0 +1,35 @@
+modules = ["python-3.12"]
+[agent]
+expertMode = true
+stack = "BEST_EFFORT_FALLBACK"
+
+[nix]
+channel = "stable-25_05"
+packages = ["antlr", "cairo", "cargo", "ffmpeg-full", "freetype", "ghostscript", "gitFull", "glibcLocales", "gobject-introspection", "gtk3", "jre", "lcms2", "libGL", "libGLU", "libiconv", "libimagequant", "libjpeg", "libjpeg_turbo", "libpng", "libtiff", "libwebp", "libxcrypt", "libyaml", "openjpeg", "openssl", "pkg-config", "qhull", "rustc", "tcl", "tk", "which", "xsimd", "zlib"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python demo.py"
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[deployment]
+deploymentTarget = "vm"
+run = ["python", "demo.py"]
